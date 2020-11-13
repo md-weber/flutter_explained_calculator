@@ -2,7 +2,11 @@ import 'package:flutter_explained_calculator/services/calculation_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 main() {
-  CalculationService subject = CalculationService();
+  CalculationService subject;
+  
+  setUp(() {
+    subject = CalculationService();
+  });
 
   group("add", () {
     test("should do add two numbers", () {

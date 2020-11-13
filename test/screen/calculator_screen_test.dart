@@ -51,6 +51,12 @@ void main() {
 
     expect(find.text("13.0"), findsOneWidget);
   });
+
+  testWidgets("should render correctly", (tester) async {
+    await tester.pumpWidget(createSubjectWidget());
+    await expectLater(
+        find.byType(CalculatorScreen), matchesGoldenFile('calculator.png'));
+  });
 }
 
 MaterialApp createSubjectWidget() {
