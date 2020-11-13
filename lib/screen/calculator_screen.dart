@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_explained_calculator/services/calculation_service.dart';
 
 enum Calculation { Divide, Multiply, Add, Subtract, None }
 
 class CalculatorScreen extends StatefulWidget {
+  final CalculationService calculation;
+
+  const CalculatorScreen({this.calculation});
+
   @override
   _CalculatorScreenState createState() => _CalculatorScreenState();
 }
@@ -12,31 +17,6 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   String firstValue = "";
   String secondValue = "";
   Calculation activeCalculation = Calculation.None;
-
-  double add(double a, double b) {
-    return a + b;
-  }
-
-  double subtract(double a, double b) {
-    return a - b;
-  }
-
-  double multiply(double a, double b) {
-    return a * b;
-  }
-
-  double divide(double a, double b) {
-    if (b == 0) throw ArgumentError("Dividing through 0 is not possible");
-    return a / b;
-  }
-
-  double percent(double a) {
-    return a / 100;
-  }
-
-  double changeSymbol(double a) {
-    return a * -1;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,8 +72,12 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               background: Colors.grey,
               onTap: () {
                 firstValue != ""
-                    ? firstValue = percent(double.parse(firstValue)).toString()
-                    : result = percent(double.parse(firstValue)).toString();
+                    ? firstValue = widget.calculation
+                        .percent(double.parse(firstValue))
+                        .toString()
+                    : result = widget.calculation
+                        .percent(double.parse(firstValue))
+                        .toString();
               },
             ),
             CalculatorButtons(
@@ -261,13 +245,14 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     double a = result != "0" ? double.parse(result) : double.parse(firstValue);
     double b = double.parse(secondValue);
 
-    if (activeCalculation == Calculation.Add) result = add(a, b).toString();
+    if (activeCalculation == Calculation.Add)
+      result = widget.calculation.add(a, b).toString();
     if (activeCalculation == Calculation.Subtract)
-      result = subtract(a, b).toString();
+      result = widget.calculation.subtract(a, b).toString();
     if (activeCalculation == Calculation.Multiply)
-      result = multiply(a, b).toString();
+      result = widget.calculation.multiply(a, b).toString();
     if (activeCalculation == Calculation.Divide)
-      result = divide(a, b).toString();
+      result = widget.calculation.divide(a, b).toString();
 
     return result;
   }

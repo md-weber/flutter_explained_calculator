@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_explained_calculator/screen/calculator_screen.dart';
+import 'package:flutter_explained_calculator/services/calculation_service.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +14,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: CalculatorScreen(),
+      home: CalculatorScreen(
+        calculation: CalculationService(),
+      ),
     );
   }
 }
