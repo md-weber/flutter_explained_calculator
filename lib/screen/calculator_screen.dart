@@ -6,7 +6,7 @@ enum Calculation { Divide, Multiply, Add, Subtract, None }
 class CalculatorScreen extends StatefulWidget {
   final CalculationService calculation;
 
-  const CalculatorScreen({this.calculation});
+  const CalculatorScreen({@required this.calculation});
 
   @override
   _CalculatorScreenState createState() => _CalculatorScreenState();
@@ -25,7 +25,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Container(
-          height: 300,
+          height: 200,
           padding: EdgeInsets.only(bottom: 8, right: 8),
           width: double.infinity,
           child: Align(

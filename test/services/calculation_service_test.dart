@@ -104,22 +104,17 @@ main() {
   });
 
   group("changeSymbol", () {
-    test("should divide two numbers", () {
-      final result = subject.divide(5, 10);
-      expect(result, 0.5);
+    test("should change symbol", () {
+      final result = subject.changeSymbol(5);
+      expect(result, -5);
     });
 
-    test("should divide 0", () {
-      expect(() => subject.divide(500, 0), throwsArgumentError);
-    });
-
-    test("should divide negative numbers", () {
-      final result = subject.multiply(-100, -200);
-      expect(result, 20000);
+    test("should change symbol negative number", () {
+      expect(subject.changeSymbol(-500), 500);
     });
 
     test("should throw an error", () {
-      expect(() => subject.divide(null, 300), throwsNoSuchMethodError);
+      expect(() => subject.changeSymbol(null), throwsNoSuchMethodError);
     });
   });
 }
