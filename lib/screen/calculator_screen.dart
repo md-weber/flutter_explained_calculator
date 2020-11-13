@@ -36,6 +36,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   : firstValue != ""
                       ? firstValue
                       : result,
+              key: Key("result"),
               style: TextStyle(fontSize: 48),
             ),
           ),
