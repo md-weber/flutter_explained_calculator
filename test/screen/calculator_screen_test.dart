@@ -49,7 +49,7 @@ void main() {
     await tester.tap(find.text("="));
     await tester.pump();
 
-    expect(find.text("13.0"), findsOneWidget);
+    expect(find.text("13,0"), findsOneWidget);
   });
 
   testWidgets("should render correctly", (tester) async {
