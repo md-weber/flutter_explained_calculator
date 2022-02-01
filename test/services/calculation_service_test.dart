@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 main() {
   CalculationService subject;
-  
+
   setUp(() {
     subject = CalculationService();
   });
@@ -22,6 +22,10 @@ main() {
     test("should add 0", () {
       final result = subject.add(0, 0);
       expect(result, 0);
+    });
+
+    test("what about doubles?", () {
+      expect(subject.add(0.2, 0.3), 0.5);
     });
 
     test("should fail on null", () {

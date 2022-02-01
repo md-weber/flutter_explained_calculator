@@ -243,6 +243,9 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   }
 
   String calculateResult(Calculation activeCalculation) {
+    firstValue = firstValue.replaceAll(",", ".");
+    secondValue = secondValue.replaceAll(",", ".");
+    result = result.replaceAll(",", ".");
     double a = result != "0" ? double.parse(result) : double.parse(firstValue);
     double b = double.parse(secondValue);
 
@@ -255,6 +258,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     if (activeCalculation == Calculation.Divide)
       result = widget.calculation.divide(a, b).toString();
 
+    result = result.replaceAll(".", ",");
     return result;
   }
 }
