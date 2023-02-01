@@ -6,7 +6,7 @@ enum Calculation { Divide, Multiply, Add, Subtract, None }
 class CalculatorScreen extends StatefulWidget {
   final CalculationService calculation;
 
-  const CalculatorScreen({@required this.calculation});
+  const CalculatorScreen({required this.calculation});
 
   @override
   _CalculatorScreenState createState() => _CalculatorScreenState();
@@ -264,8 +264,8 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
 }
 
 class CalculatorButtons extends StatelessWidget {
-  final String text;
-  final VoidCallback onTap;
+  final String? text;
+  final VoidCallback? onTap;
   final bool isActive;
   final Color background;
 
@@ -285,7 +285,7 @@ class CalculatorButtons extends StatelessWidget {
         duration: Duration(milliseconds: 200),
         child: Center(
           child: Text(
-            text,
+            text ?? "",
             style: TextStyle(
                 fontSize: 24, color: isActive ? Colors.white : Colors.black),
           ),

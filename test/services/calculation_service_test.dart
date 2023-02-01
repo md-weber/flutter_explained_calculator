@@ -2,7 +2,7 @@ import 'package:flutter_explained_calculator/services/calculation_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 main() {
-  CalculationService subject;
+  late CalculationService subject;
 
   setUp(() {
     subject = CalculationService();
@@ -27,10 +27,6 @@ main() {
     test("what about doubles?", () {
       expect(subject.add(0.2, 0.3), 0.5);
     });
-
-    test("should fail on null", () {
-      expect(() => subject.add(null, 5), throwsNoSuchMethodError);
-    });
   });
 
   group("subtract", () {
@@ -47,10 +43,6 @@ main() {
     test("should subtract negative numbers", () {
       final result = subject.subtract(-100, -200);
       expect(result, 100);
-    });
-
-    test("should throw an error", () {
-      expect(() => subject.subtract(null, 300), throwsNoSuchMethodError);
     });
   });
 
@@ -69,10 +61,6 @@ main() {
       final result = subject.multiply(-100, -200);
       expect(result, 20000);
     });
-
-    test("should throw an error", () {
-      expect(() => subject.multiply(null, 300), throwsNoSuchMethodError);
-    });
   });
 
   group("divide", () {
@@ -89,10 +77,6 @@ main() {
       final result = subject.multiply(-100, -200);
       expect(result, 20000);
     });
-
-    test("should throw an error", () {
-      expect(() => subject.divide(null, 300), throwsNoSuchMethodError);
-    });
   });
 
   group("percent", () {
@@ -105,10 +89,6 @@ main() {
       final result = subject.percent(-5);
       expect(result, -0.05);
     });
-
-    test("should throw an error", () {
-      expect(() => subject.percent(null), throwsNoSuchMethodError);
-    });
   });
 
   group("changeSymbol", () {
@@ -119,10 +99,6 @@ main() {
 
     test("should change symbol negative number", () {
       expect(subject.changeSymbol(-500), 500);
-    });
-
-    test("should throw an error", () {
-      expect(() => subject.changeSymbol(null), throwsNoSuchMethodError);
     });
   });
 }
