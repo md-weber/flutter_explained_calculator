@@ -2,14 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_explained_calculator/screen/calculator_screen.dart';
 import 'package:flutter_explained_calculator/services/calculation_service.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
-
-class MockCalculationService extends Mock implements CalculationService {
-  @override
-  double add(double a, double b) {
-    return 13;
-  }
-}
 
 void main() {
   group("Calculator Screen", () {
@@ -62,7 +54,7 @@ void main() {
 MaterialApp createSubjectWidget() {
   return MaterialApp(
     home: CalculatorScreen(
-      calculation: MockCalculationService(),
+      calculation: CalculationService(),
     ),
   );
 }
